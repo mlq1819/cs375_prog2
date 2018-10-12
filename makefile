@@ -21,4 +21,5 @@ clean:
 	rm -rf $(P)
 	rm -rf $(P).o
 	rm -rf $(R).o
+	rm -rf $(Q).o
 	rm -rf output.txt
