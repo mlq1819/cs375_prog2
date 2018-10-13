@@ -104,7 +104,8 @@ bool minheap::eliminateWeakest(bool print){
 		return false;
 	}
 	this->swap(0, this->heap.size()-1);
-	contestant c = this->heap.pop_back();
+	contestant c = contestant(this->heap[this->heap.size()-1]);
+	this->heap.pop_back();
 	this->handle[c.id]=-1;
 	this->num_const--;
 	if(print){

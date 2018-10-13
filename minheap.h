@@ -11,6 +11,7 @@
 class contestant{
 	public:
 		contestant(int id, int points){this->id=id; this->points=points;};
+		contestant(const contestant o){this->id=o.id; this->points=o.points;};
 		int id;
 		int points;
 		bool operator<(contestant o) const {return this->points<o.points;};
