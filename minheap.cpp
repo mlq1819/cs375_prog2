@@ -38,8 +38,9 @@ void minheap::swap(int a, int b){
 	contestant a_c = contestant(this->heap[a]);
 	this->heap[a] = contestant(this->heap[b]);
 	this->heap[b] = contestant(a_c);
-	this->handle[a]=b;
-	this->handle[b]=a;
+	int a_i = this->handle[a];
+	this->handle[a]=this->handle[b];
+	this->handle[b]=a_i;
 }
 
 bool minheap::findContestant(int id) const {
