@@ -111,10 +111,10 @@ int main(int argc, char** argv){
 		int arg0 = getArg0(reader.current());
 		int arg1 = getArg1(reader.current());
 		int arg2 = getArg2(reader.current());
-		switch(arg0){
 #if DEBUG
 heap.printAll();
 #endif
+		switch(arg0){
 			case 1:
 				if(arg1!=-1)
 					heap.findContestant(arg1);
