@@ -80,7 +80,7 @@ int main(int argc, char** argv){
 	}
 	ifstream ifp;
 	ifp.open(argv[1]);
-	if(!ifp.is_open()){
+	if(!ifp.is_open() && ifp.good()){
 		cout << "Bad Input File Name: \"" << argv[1] << "\"" << endl;
 		return 1;
 	}
@@ -98,7 +98,7 @@ int main(int argc, char** argv){
 	minheap heap = minheap(max_comps);
 	ofstream ofp;
 	ofp.open(argv[2]);
-	if(!ofp.is_open()){
+	if(!ofp.is_open() && ofp.good()){
 		cout << "Bad Output File Name: \"" << argv[2] << "\"; printing to STDOUT instead" << endl;
 	} else 
 		heap.setOTP(&ofp);
@@ -173,7 +173,7 @@ heap.printAll();
 heap.printAll();
 #endif
 //														cleanup phase
-	if(((string)"STDOUT").compare(argv[2])!=0 && ofp.is_open())
+	if(ofp.is_open())
 		ofp.close();
 	return 0;
 }
