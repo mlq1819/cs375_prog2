@@ -81,7 +81,7 @@ int main(int argc, char** argv){
 	ifstream ifp;
 	ifp.open(argv[1]);
 	if(!ifp.is_open()){
-		cout << "Bad Input File Name: " << argv[1] << endl;
+		cout << "Bad Input File Name: \"" << argv[1] << "\"" << endl;
 		return 1;
 	}
 	FileReader reader = FileReader(&ifp);
@@ -97,8 +97,9 @@ int main(int argc, char** argv){
 	int max_comps = atoi(reader.current().c_str());
 	minheap heap = minheap(max_comps);
 	ofstream ofp;
+	ofstream.open(argv[2]);
 	if(!ofp.is_open()){
-		cout << "Bad Output File Name: " << argv[2] << "; printing to STDOUT instead" << endl;
+		cout << "Bad Output File Name: \"" << argv[2] << "\"; printing to STDOUT instead" << endl;
 	} else 
 		heap.setOTP(&ofp);
 //														execution phase
