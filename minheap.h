@@ -27,7 +27,7 @@ class minheap{
 		std::vector<contestant> heap;
 		void heapify(int i);
 		void swap(int, int);
-		std::ofstream output;
+		std::ofstream * output;
 		int max_size;
 		int num_const;
 	public:
