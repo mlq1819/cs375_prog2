@@ -32,7 +32,7 @@ class minheap{
 		int num_const;
 	public:
 		minheap(int max_size);
-		minheap(int max_size, std::ofstream * output);
+		bool setOTP(std::ofstream * output);
 		contestant operator[](int i) const {return this->heap[this->handle[i]];};
 		void shrink_to_fit(){this->heap.shrink_to_fit(); this->handle.shrink_to_fit();};
 		

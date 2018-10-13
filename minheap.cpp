@@ -10,12 +10,11 @@ minheap::minheap(int max_size){
 	this->num_const=0;
 }
 
-minheap::minheap(int max_size, ostream * output){
-	this->handle=vector<int>();
-	this->heap=vector<contestant>();
+bool minheap::setOTP(ostream * output){
+	if(this->output==NULL)
+		return false;
 	this->output=output;
-	this->max_size=max_size;
-	this->num_const=0;
+	return true;
 }
 
 void minheap::heapify(int i){
