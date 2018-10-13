@@ -97,7 +97,7 @@ int main(int argc, char** argv){
 	int max_comps = atoi(reader.current().c_str());
 	minheap heap = minheap(max_comps);
 	ofstream ofp;
-	ofstream.open(argv[2]);
+	ofp.open(argv[2]);
 	if(!ofp.is_open()){
 		cout << "Bad Output File Name: \"" << argv[2] << "\"; printing to STDOUT instead" << endl;
 	} else 
