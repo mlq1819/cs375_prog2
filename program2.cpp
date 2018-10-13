@@ -94,7 +94,7 @@ int main(int argc, char** argv){
 	ifp.close();
 //														processing phase
 	reader.start();
-	int max_comps = atoi(reader.current());
+	int max_comps = atoi(reader.current().c_str);
 	minheap heap = minheap(max_comps);
 	ofstream ofp;
 	if(((string)"STDOUT").compare(argv[2])!=0)
