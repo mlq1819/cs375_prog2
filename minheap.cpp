@@ -45,7 +45,7 @@ void minheap::swap(int a, int b){
 }
 
 bool minheap::findContestant(int id) const {
-	if(id<this->handle.size()){
+	if(((unsigned int) id)<this->handle.size()){
 		int i = this->handle[id];
 		if(i!=-1){
 			int p = this->heap[i].points;
@@ -72,14 +72,14 @@ bool minheap::insertContestant(int id, int score){
 		this->shrink_to_fit();
 		return false;
 	}
-	if(id<this->handle.size() && this->handle[id]!=-1){
+	if(((unsigned int) id)<this->handle.size() && this->handle[id]!=-1){
 		if(output!=NULL && output->is_open())
 			(* this->output) << "Contestant " << id << " is already in the extended heap: cannot insert." << endl;
 		else
 			cout << "Contestant " << id << " is already in the extended heap: cannot insert." << endl;
 		return false;
 	}
-	while(this->handle.size()<=id){
+	while(this->handle.size()<=((unsigned int) id)){
 		this->handle.push_back(-1);
 	}
 	contestant c = contestant(id, score);
@@ -119,7 +119,7 @@ bool minheap::eliminateWeakest(bool print){
 }
 
 bool minheap::earnPoints(int id, int points){
-	if(id<this->handle.size()){
+	if(((unsigned int) id)<this->handle.size()){
 		int i = this->handle[id];
 		if(i!=-1){
 			this->heap[i].points+=points;
@@ -138,7 +138,7 @@ bool minheap::earnPoints(int id, int points){
 }
 
 bool minheap::losePoints(int id, int points){
-	if(id<this->handle.size()){
+	if(((unsigned int) id)<this->handle.size()){
 		int i = this->handle[id];
 		if(i!=-1){
 			this->heap[i].points-=points;
@@ -158,11 +158,11 @@ bool minheap::losePoints(int id, int points){
 
 void minheap::showContestants() const {
 	if(output!=NULL && output->is_open()){
-		for(int i=0; i<this->heap.size(); i++){
+		for(unsigned int i=0; i<this->heap.size(); i++){
 			(* this->output) << "Contestant " << this->heap[i].id << " is in extended heap location " << i << " with score " << this->heap[i].points << "." << endl;
 		}
 	} else {
-		for(int i=0; i<this->heap.size(); i++){
+		for(unsigned int i=0; i<this->heap.size(); i++){
 			cout << "Contestant " << this->heap[i].id << " is in extended heap location " << i << " with score " << this->heap[i].points << "." << endl;
 		}
 	}
@@ -170,14 +170,14 @@ void minheap::showContestants() const {
 
 void minheap::showHandles() const {
 	if(output!=NULL && output->is_open()){
-		for(int i=0; i<this->handle.size(); i++){
+		for(unsigned int i=0; i<this->handle.size(); i++){
 			if(this->handle[i]==-1)
 				(* this->output) << "There is no Contestant " << i << " in the extended heap: handle[" << i << "]=-1." << endl;
 			else
 				(* this->output) << "Contestant " << i << " stored in extended heap location " << this->handle[i] << "." << endl;
 		}
 	} else {
-		for(int i=0; i<this->handle.size(); i++){
+		for(unsigned int i=0; i<this->handle.size(); i++){
 			if(this->handle[i]==-1)
 				cout << "There is no Contestant " << i << " in the extended heap: handle[" << i << "]=-1." << endl;
 			else
@@ -187,7 +187,7 @@ void minheap::showHandles() const {
 }
 
 bool minheap::showLocation(int id) const{
-	if(id<this->handle.size()){
+	if(((unsigned int) id)<this->handle.size()){
 		int i = this->handle[id];
 		if(i!=-1){
 			if(output!=NULL && output->is_open())
