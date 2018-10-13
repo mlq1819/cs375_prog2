@@ -174,14 +174,14 @@ void minheap::showHandles() const {
 			if(this->handle[i]==-1)
 				(* this->output) << "There is no Contestant <" << i << "> in the extended heap: handle[<" << i << ">]=-1." << endl;
 			else
-				(* this->output) << "Contestant <" << i << "> stored in extended heap location " << this->handle[i] << "." << endl;
+				(* this->output) << "Contestant <" << i << "> stored in extended heap location <" << this->handle[i] << ">." << endl;
 		}
 	} else {
 		for(unsigned int i=0; i<this->handle.size(); i++){
 			if(this->handle[i]==-1)
 				cout << "There is no Contestant <" << i << "> in the extended heap: handle[<" << i << ">]=-1." << endl;
 			else
-				cout << "Contestant <" << i << "> stored in extended heap location " << this->handle[i] << "." << endl;
+				cout << "Contestant <" << i << "> stored in extended heap location <" << this->handle[i] << ">." << endl;
 		}
 	}
 }
