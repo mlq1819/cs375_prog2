@@ -10,7 +10,7 @@ minheap::minheap(int max_size){
 	this->num_const=0;
 }
 
-bool minheap::setOTP(ostream * output){
+bool minheap::setOTP(ofstream * output){
 	if(this->output==NULL)
 		return false;
 	this->output=output;
