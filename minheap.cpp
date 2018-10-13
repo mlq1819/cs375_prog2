@@ -20,7 +20,7 @@ bool minheap::setOTP(ofstream * output){
 	return true;
 }
 
-bool minheap:isHeap(unsigned int i) const{
+bool minheap::isHeap(unsigned int i) const{
 	unsigned int l = i*2+1;
 	unsigned int r=l+1;
 	bool l_ = l<this->heap.size();
