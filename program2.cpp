@@ -97,13 +97,8 @@ int main(int argc, char** argv){
 	int max_comps = atoi(reader.current().c_str());
 	minheap heap = minheap(max_comps);
 	ofstream ofp;
-	if(((string)"STDOUT").compare(argv[2])!=0)
-		ofp.open(argv[2]);
 	if(!ofp.is_open()){
-		if(((string)"STDOUT").compare(argv[2])!=0)
-			cout << "Bad Output File Name: " << argv[2] << "; printing to STDOUT instead" << endl;
-		else
-			cout << "Output to be sent to STDOUT" << endl;
+		cout << "Bad Output File Name: " << argv[2] << "; printing to STDOUT instead" << endl;
 	} else 
 		heap.setOTP(&ofp);
 //														execution phase
