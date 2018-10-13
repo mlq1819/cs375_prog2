@@ -37,7 +37,7 @@ void minheap::heapify(unsigned int i){
 void minheap::swap(int a, int b){
 	int a_i = this->handle[a];
 	int b_i = this->handle[b];
-	contestant a_c = this->heap[a_i];
+	contestant a_c = contestant(this->heap[a_i]);
 	this->heap[a_i] = this->heap[b_i];
 	this->heap[b_i] = a_c;
 	this->handle[a]=b_i;
