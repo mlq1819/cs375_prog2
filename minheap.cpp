@@ -259,7 +259,7 @@ void minheap::printAll() const {
 	cout << "\tHandle" << endl;
 	for(unsigned int i=1; i<this->handle.size(); i++){
 		cout << "\t\thandle[" << i << "]=" << this->handle[i] << endl;
-		if(((unsigned int)this->heap[this->handle[i]].id)!=i)
+		if(this->handle[i]!=-1 && ((unsigned int)this->heap[this->handle[i]].id)!=i)
 			cout << "\t\tWARNING - handle does not match heap - WARNING" << endl;
 	}
 }
