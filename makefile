@@ -8,7 +8,7 @@ all: $(P)
 $(P): $(P).o $(R).o $(Q).o
 	g++ $(CFLAGS) $(P).o $(R).o $(Q).o -o $(P)
 
-$(P).o: $(P).cpp $(P).h $(R).h $(Q).h
+$(P).o: $(P).cpp $(R).h $(Q).h
 	g++ $(CFLAGS) -c $(P).cpp -o $(P).o
 
 $(R).o: $(R).cpp $(R).h
