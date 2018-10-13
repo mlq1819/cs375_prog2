@@ -33,7 +33,7 @@ class minheap{
 	public:
 		minheap(int max_size);
 		minheap(int max_size, std::ofstream * output);
-		contestant operator[](int i) const {return this->heap[this->handle[i]]};
+		contestant operator[](int i) const {return this->heap[this->handle[i]];};
 		void shrink_to_fit(){this->heap.shrink_to_fit(); this->handle.shrink_to_fit();};
 		
 		bool findContestant(int) const;

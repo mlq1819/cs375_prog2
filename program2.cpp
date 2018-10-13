@@ -12,7 +12,7 @@
 using namespace std;
 
 int getArg0(string str){
-	int i=0;
+	unsigned int i=0;
 	while(i<str.length() && str[i]!=' ')
 		i++;
 	string arg0 = str.substr(0, i);
@@ -39,32 +39,30 @@ int getArg0(string str){
 }
 
 int getArg1(string str){
-	int i=0;
+	unsigned int i=0;
 	while(i<str.length() && str[i]!='<')
 		i++;
-	int j=i;
+	unsigned int j=i;
 	while(j<str.length() && str[j]!='>')
 		j++;
-	j-= ++i;
-	if(i>=j)
+	if(++i>=j)
 		return -1;
-	return stoi(str.substr(i, j));
+	return stoi(str.substr(i, j-i));
 }
 
 int getArg2(string str){
-	int i=0;
+	unsigned int i=0;
 	while(i<str.length() && str[i]!='<')
 		i++;
 	i++;
 	while(i<str.length() && str[i]!='<')
 		i++;
-	int j=i;
+	unsigned int j=i;
 	while(j<str.length() && str[j]!='>')
 		j++;
-	j-= ++i;
-	if(i>=j)
+	if(++i>=j)
 		return -1;
-	return stoi(str.substr(i, j));
+	return stoi(str.substr(i, j-i));
 }
 
 int main(int argc, char** argv){
@@ -82,7 +80,7 @@ int main(int argc, char** argv){
 	}
 	ifstream ifp;
 	ifp.open(argv[1]);
-	if(!ipf.is_open()){
+	if(!ifp.is_open()){
 		cout << "Bad Input File Name: " << argv[1] << endl;
 		return 1;
 	}
@@ -99,10 +97,10 @@ int main(int argc, char** argv){
 	int max_comps = atoi(reader.current());
 	minheap heap;
 	ofstream ofp;
-	if(argv[2].compare("STDOUT")!=0)
+	if("STDOUT".compare(argv[2])!=0)
 		ofp.open(argv[2]);
-	if(!opf.is_open()){
-		if(argv[2].compare("STDOUT")!=0)
+	if(!ofp.is_open()){
+		if("STDOUT".compare(argv[2])!=0)
 			cout << "Bad Output File Name: " << argv[2] << "; printing to STDOUT instead" << endl;
 		else
 			cout << "Output to be sent to STDOUT" << endl;
@@ -111,7 +109,7 @@ int main(int argc, char** argv){
 		heap = minheap(max_comps, &opf);
 	}
 //														execution phase
-	while(reader.next(){
+	while(reader.next()){
 		int arg0 = getArg0(reader.current());
 		int arg1 = getArg1(reader.current());
 		int arg2 = getArg2(reader.current());
@@ -175,7 +173,7 @@ int main(int argc, char** argv){
 		}
 	}
 //														cleanup phase
-	if(opf.is_open())
+	if(ofp.is_open())
 		ofp.close();
 	return 0;
 }
