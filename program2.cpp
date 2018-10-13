@@ -5,8 +5,8 @@
 #include <vector>
 #include <stdio.h>
 #include <string>
-#include "program2.h"
 #include "Filereader.h"
+#include "minheap.h"
 #define DEBUG false
 
 using namespace std;
