@@ -46,7 +46,7 @@ void minheap::swap(int a, int b){
 
 bool minheap::findContestant(int id) const {
 	if(output!=NULL && output->is_open())
-		output << "findContestant <" << id << ">" << endl;
+		(* this->output) << "findContestant <" << id << ">" << endl;
 	else
 		cout << "findContestant <" << id << ">" << endl;
 	if(((unsigned int) id)<this->handle.size()){
@@ -69,7 +69,7 @@ bool minheap::findContestant(int id) const {
 
 bool minheap::insertContestant(int id, int score){
 	if(output!=NULL && output->is_open())
-		output << "insertContestant <" << id << "> <" << score << ">" << endl;
+		(* this->output) << "insertContestant <" << id << "> <" << score << ">" << endl;
 	else
 		cout << "insertContestant <" << id << "> <" << score << ">" << endl;
 	if(this->num_const==this->max_size){
@@ -103,7 +103,7 @@ bool minheap::insertContestant(int id, int score){
 
 bool minheap::eliminateWeakest(bool print){
 	if(output!=NULL && output->is_open())
-		output << "eliminateWeakest" << endl;
+		(* this->output) << "eliminateWeakest" << endl;
 	else
 		cout << "eliminateWeakest" << endl;
 	if(this->heap.size()==0){
@@ -132,7 +132,7 @@ bool minheap::eliminateWeakest(bool print){
 
 bool minheap::earnPoints(int id, int points){
 	if(output!=NULL && output->is_open())
-		output << "earnPoints <" << id << "> <" << points << ">" << endl;
+		(* this->output) << "earnPoints <" << id << "> <" << points << ">" << endl;
 	else
 		cout << "earnPoints <" << id << "> <" << points << ">" << endl;
 	if(((unsigned int) id)<this->handle.size()){
@@ -155,7 +155,7 @@ bool minheap::earnPoints(int id, int points){
 
 bool minheap::losePoints(int id, int points){
 	if(output!=NULL && output->is_open())
-		output << "losePoints <" << id << "> <" << points << ">" << endl;
+		(* this->output) << "losePoints <" << id << "> <" << points << ">" << endl;
 	else
 		cout << "losePoints <" << id << "> <" << points << ">" << endl;
 	if(((unsigned int) id)<this->handle.size()){
@@ -178,7 +178,7 @@ bool minheap::losePoints(int id, int points){
 
 void minheap::showContestants() const {
 	if(output!=NULL && output->is_open())
-		output << "showContestants" << endl;
+		(* this->output) << "showContestants" << endl;
 	else
 		cout << "showContestants" << endl;
 	if(output!=NULL && output->is_open()){
@@ -194,7 +194,7 @@ void minheap::showContestants() const {
 
 void minheap::showHandles() const {
 	if(output!=NULL && output->is_open())
-		output << "showHandles" << endl;
+		(* this->output) << "showHandles" << endl;
 	else
 		cout << "showHandles" << endl;
 	if(output!=NULL && output->is_open()){
@@ -216,7 +216,7 @@ void minheap::showHandles() const {
 
 bool minheap::showLocation(int id) const{
 	if(output!=NULL && output->is_open())
-		output << "showLocation <" << id << ">" << endl;
+		(* this->output) << "showLocation <" << id << ">" << endl;
 	else
 		cout << "showLocation <" << id << ">" << endl;
 	if(((unsigned int) id)<this->handle.size()){
@@ -238,7 +238,7 @@ bool minheap::showLocation(int id) const{
 
 bool minheap::crownWinner(){
 	if(output!=NULL && output->is_open())
-		output << "crownWinner" << endl;
+		(* this->output) << "crownWinner" << endl;
 	else
 		cout << "crownWinner" << endl;
 	while(this->num_const>1){
