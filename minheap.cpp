@@ -1,6 +1,6 @@
 #include "minheap.h"
 #ifndef DEBUG
-#define DEBUG false
+#define DEBUG true
 #endif
 
 using namespace std;
@@ -17,6 +17,9 @@ bool minheap::setOTP(ofstream * output){
 	if(this->output==NULL)
 		return false;
 	this->output=output;
+#if DEBUG
+cout << "Output file Stream Set: " << this->output.good() << endl;
+#endif
 	return true;
 }
 
