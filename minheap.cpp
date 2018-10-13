@@ -17,10 +17,10 @@ bool minheap::setOTP(ofstream * output){
 	return true;
 }
 
-void minheap::heapify(int i){
-	int smallest = i;
-	int l = i*2+1;
-	int r = l+1;
+void minheap::heapify(unsigned int i){
+	unsigned int smallest = i;
+	unsigned int l = i*2+1;
+	unsigned int r = l+1;
 	if(l<this->heap.size() && this->heap[l] < this->heap[i])
 		smallest = l;
 	if(r<this->heap.size() && this->heap[r] < this->heap[i])
@@ -29,7 +29,7 @@ void minheap::heapify(int i){
 		this->swap(smallest, i);
 		int p = (i-1)/2;
 		if(p>=0 && this->heap[p] > this->heap[i])
-			this->heapify(p);
+			this->heapify((unsigned int)p);
 		this->heapify(smallest);
 	}
 }

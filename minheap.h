@@ -25,7 +25,7 @@ class minheap{
 	private:
 		std::vector<int> handle;
 		std::vector<contestant> heap;
-		void heapify(int i);
+		void heapify(unsigned int i);
 		void swap(int, int);
 		std::ofstream * output;
 		int max_size;
