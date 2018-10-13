@@ -35,13 +35,11 @@ void minheap::heapify(unsigned int i){
 }
 
 void minheap::swap(int a, int b){
-	int a_i = this->handle[a];
-	int b_i = this->handle[b];
-	contestant a_c = contestant(this->heap[a_i]);
-	this->heap[a_i] = contestant(this->heap[b_i]);
-	this->heap[b_i] = contestant(a_c);
-	this->handle[a]=b_i;
-	this->handle[b]=a_i;
+	contestant a_c = contestant(this->heap[a]);
+	this->heap[a] = contestant(this->heap[b]);
+	this->heap[b] = contestant(a_c);
+	this->handle[a]=b;
+	this->handle[b]=a;
 }
 
 bool minheap::findContestant(int id) const {
@@ -117,7 +115,6 @@ bool minheap::eliminateWeakest(bool print){
 	}
 	int id = this->heap[0].id;
 	int score = this->heap[0].points;
-	cout << this->heap.size() << endl;
 	this->swap(0, this->heap.size()-1);
 	this->printAll();
 	this->heap.pop_back();
