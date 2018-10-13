@@ -18,7 +18,7 @@ bool minheap::setOTP(ofstream * output){
 		return false;
 	this->output=output;
 #if DEBUG
-cout << "Output file Stream Set: " << this->output.good() << endl;
+cout << "Output file Stream Set: " << this->output->good() << endl;
 #endif
 	return true;
 }
