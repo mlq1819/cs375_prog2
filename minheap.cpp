@@ -126,6 +126,7 @@ bool minheap::insertContestant(int id, int score){
 	contestant c = contestant(id, score);
 	this->handle[id]=this->heap.size();
 	this->heap.push_back(c);
+	this->num_const++;
 	if(output!=NULL && output->is_open())
 		(* this->output) << "Contestant <" << id << "> inserted with initial score <" << score << ">." << endl;
 	else
