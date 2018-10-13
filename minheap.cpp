@@ -40,7 +40,7 @@ void minheap::swap(int a, int b){
 	contestant a_c = contestant(this->heap[a_i]);
 	this->heap[a_i] = contestant(this->heap[b_i]);
 	this->heap[b_i] = contestant(a_c);
-	this->handle[a]=this->handle[b];
+	this->handle[a]=b_i;
 	this->handle[b]=a_i;
 }
 
@@ -117,7 +117,7 @@ bool minheap::eliminateWeakest(bool print){
 	}
 	int id = this->heap[0].id;
 	int score = this->heap[0].points;
-	this->swap(0, this->heap[this->heap.size()-1].id);
+	this->swap(this->heap[0].id, this->heap[this->heap.size()-1].id);
 	this->printAll();
 	this->heap.pop_back();
 	this->handle[id]=-1;
