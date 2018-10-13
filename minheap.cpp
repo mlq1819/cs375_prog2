@@ -257,5 +257,5 @@ void minheap::printAll() const {
 		cout << "\t\theap[" << i << "]=<" << this->heap[i].id << "," << this->heap[i].points << ">" << endl;
 	cout << "\tHandle" << endl;
 	for(unsigned int i=0; i<this->handle.size(); i++)
-		cout << "\t\thandle[" << i << "]=" << this->handle[i] << end;
+		cout << "\t\thandle[" << i << "]=" << this->handle[i] << endl;
 }
