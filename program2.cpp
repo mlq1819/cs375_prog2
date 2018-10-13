@@ -171,6 +171,7 @@ int main(int argc, char** argv){
 		}
 	}
 //														cleanup phase
+	cout << "TEST" << endl;
 	if(((string)"STDOUT").compare(argv[2])!=0 && ofp.is_open())
 		ofp.close();
 	return 0;
