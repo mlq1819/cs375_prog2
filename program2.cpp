@@ -98,7 +98,7 @@ int main(int argc, char** argv){
 	minheap heap = minheap(max_comps);
 	ofstream ofp;
 	ofp.open(argv[2]);
-	if(!ofp.is_open() && ofp.good()){
+	if(!ofp.is_open() || !ofp.good()){
 		cout << "Bad Output File Name: \"" << argv[2] << "\"; printing to STDOUT instead" << endl;
 	} else 
 		heap.setOTP(&ofp);
