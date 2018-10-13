@@ -115,16 +115,17 @@ bool minheap::eliminateWeakest(bool print){
 		}
 		return false;
 	}
+	int id = this->heap[0].id;
+	int score = this->heap[0].points;
 	this->swap(0, this->heap.size()-1);
-	contestant c = contestant(this->heap[this->heap.size()-1]);
 	this->heap.pop_back();
-	this->handle[c.id]=-1;
+	this->handle[id]=-1;
 	this->num_const--;
 	if(print){
 		if(output!=NULL && output->is_open())
-			(* this->output) << "Contestant <" << c.id << "> with current lowest score <" << c.points << "> eliminated." << endl;
+			(* this->output) << "Contestant <" << id << "> with current lowest score <" << score << "> eliminated." << endl;
 		else
-			cout << "Contestant <" << c.id << "> with current lowest score <" << c.points << "> eliminated." << endl;
+			cout << "Contestant <" << id << "> with current lowest score <" << score << "> eliminated." << endl;
 	}
 	this->heapify(0);
 	return true;
