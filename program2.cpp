@@ -16,23 +16,23 @@ int getArg0(string str){
 	while(i<str.length && str[i]!=' ')
 		i++;
 	string arg0 = str.substr(0, i);
-	if(arg0.compare("findContestant")){
+	if(arg0.compare("findContestant")==0){
 		return 1;
-	} else if(arg0.compare("insertContestant")){
+	} else if(arg0.compare("insertContestant")==0){
 		return 2;
-	} else if(arg0.compare("eliminateWeakest")){
+	} else if(arg0.compare("eliminateWeakest")==0){
 		return 3;
-	} else if(arg0.compare("earnPoints")){
+	} else if(arg0.compare("earnPoints")==0){
 		return 4;
-	} else if(arg0.compare("losePoints")){
+	} else if(arg0.compare("losePoints")==0){
 		return 5;
-	} else if(arg0.compare("showContestants")){
+	} else if(arg0.compare("showContestants")==0){
 		return 6;
-	} else if(arg0.compare("showHandles")){
+	} else if(arg0.compare("showHandles")==0){
 		return 7;
-	} else if(arg0.compare("showLocation")){
+	} else if(arg0.compare("showLocation")==0){
 		return 8;
-	} else if(arg0.compare("crownWinner")){
+	} else if(arg0.compare("crownWinner")==0){
 		return 9;
 	} else
 		return -1;
@@ -99,9 +99,13 @@ int main(int argc, char** argv){
 	int max_comps = atoi(reader.current());
 	minheap heap;
 	ofstream ofp;
-	ofp.open(argv[2]);
+	if(argv[2].compare("STDOUT")!=0)
+		ofp.open(argv[2]);
 	if(!opf.is_open()){
-		cout << "Bad Output File Name: " << argv[2] << "; printing to STDOUT instead" << endl;
+		if(argv[2].compare("STDOUT")!=0)
+			cout << "Bad Output File Name: " << argv[2] << "; printing to STDOUT instead" << endl;
+		else
+			cout << "Output to be sent to STDOUT" << endl;
 		heap = minheap(max_comps);
 	} else {
 		heap = minheap(max_comps, &opf);
