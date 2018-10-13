@@ -55,11 +55,11 @@ cout << "\tTest " << ++num << "-" << i << endl;
 #if DEBUG
 cout << "\tTest " << ++num << "-" << i << endl;
 #endif
-		int p = (i-1)/2;
+		/*int p = (i-1)/2;
 		if(p>=0 && this->heap[p] > this->heap[i]){
 			this->swap(this->heap[p].id, this->heap[i].id);
 			this->heapify((unsigned int)p);
-		}
+		}*/
 #if DEBUG
 cout << "\tTest " << ++num << "-" << i << endl;
 #endif
