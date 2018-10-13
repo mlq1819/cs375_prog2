@@ -95,19 +95,22 @@ int main(int argc, char** argv){
 //														processing phase
 	reader.start();
 	int max_comps = atoi(reader.current());
+	
 	minheap heap;
-	ofstream ofp;
-	if("STDOUT".compare(argv[2])!=0)
+	bool otp = true;
+	if(((string)"STDOUT").compare(argv[2])!=0)
 		ofp.open(argv[2]);
 	if(!ofp.is_open()){
-		if("STDOUT".compare(argv[2])!=0)
+		if(((string)"STDOUT").compare(argv[2])!=0)
 			cout << "Bad Output File Name: " << argv[2] << "; printing to STDOUT instead" << endl;
 		else
 			cout << "Output to be sent to STDOUT" << endl;
-		heap = minheap(max_comps);
-	} else {
-		heap = minheap(max_comps, &opf);
+		otp = false;
 	}
+	if(otp)
+		heap=minheap(max_comps, &ofp);
+	else
+		heap=minheap(max_comps);
 //														execution phase
 	while(reader.next()){
 		int arg0 = getArg0(reader.current());
