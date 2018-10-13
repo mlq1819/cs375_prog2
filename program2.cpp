@@ -101,7 +101,6 @@ int main(int argc, char** argv){
 	if(!ofp.is_open() || !ofp.good()){
 		cout << "Bad Output File Name: \"" << argv[2] << "\"; printing to STDOUT instead" << endl;
 	} else {
-		cout << "We good?" << endl;
 		heap.setOTP(&ofp);
 	}
 //														execution phase
