@@ -94,10 +94,10 @@ int main(int argc, char** argv){
 	ifp.close();
 //														processing phase
 	reader.start();
-	int max_comps = atoi(reader.current());
-	
-	minheap heap;
+	int max_comps = atoi((const char *) reader.current());
+	minheap * hp;
 	bool otp = true;
+	ofstream ofp;
 	if(((string)"STDOUT").compare(argv[2])!=0)
 		ofp.open(argv[2]);
 	if(!ofp.is_open()){
@@ -108,9 +108,10 @@ int main(int argc, char** argv){
 		otp = false;
 	}
 	if(otp)
-		heap=minheap(max_comps, &ofp);
+		hp=&minheap(max_comps, &ofp);
 	else
-		heap=minheap(max_comps);
+		hp=&minheap(max_comps);
+	minheap heap = *hp;
 //														execution phase
 	while(reader.next()){
 		int arg0 = getArg0(reader.current());
