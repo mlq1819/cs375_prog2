@@ -136,10 +136,12 @@ bool minheap::insertContestant(int id, int score){
 }
 
 bool minheap::eliminateWeakest(bool print){
-	if(output!=NULL && output->is_open())
-		(* this->output) << "eliminateWeakest" << endl;
-	else
-		cout << "eliminateWeakest" << endl;
+	if(print){
+		if(output!=NULL && output->is_open())
+			(* this->output) << "eliminateWeakest" << endl;
+		else
+			cout << "eliminateWeakest" << endl;
+	}
 	if(this->heap.size()==0){
 		if(print){
 			if(output!=NULL && output->is_open())
