@@ -45,6 +45,10 @@ void minheap::swap(int a, int b){
 }
 
 bool minheap::findContestant(int id) const {
+	if(output!=NULL && output->is_open())
+		output << "findContestant <" << id << ">" << endl;
+	else
+		cout << "findContestant <" << id << ">" << endl;
 	if(((unsigned int) id)<this->handle.size()){
 		int i = this->handle[id];
 		if(i!=-1){
@@ -64,6 +68,10 @@ bool minheap::findContestant(int id) const {
 }
 
 bool minheap::insertContestant(int id, int score){
+	if(output!=NULL && output->is_open())
+		output << "insertContestant <" << id << "> <" << score << ">" << endl;
+	else
+		cout << "insertContestant <" << id << "> <" << score << ">" << endl;
 	if(this->num_const==this->max_size){
 		if(output!=NULL && output->is_open())
 			(* this->output) << "Contestant <" << id << "> could not be inserted because the extended heap is full." << endl;
@@ -94,6 +102,10 @@ bool minheap::insertContestant(int id, int score){
 }
 
 bool minheap::eliminateWeakest(bool print){
+	if(output!=NULL && output->is_open())
+		output << "eliminateWeakest" << endl;
+	else
+		cout << "eliminateWeakest" << endl;
 	if(this->heap.size()==0){
 		if(print){
 			if(output!=NULL && output->is_open())
@@ -119,6 +131,10 @@ bool minheap::eliminateWeakest(bool print){
 }
 
 bool minheap::earnPoints(int id, int points){
+	if(output!=NULL && output->is_open())
+		output << "earnPoints <" << id << "> <" << points << ">" << endl;
+	else
+		cout << "earnPoints <" << id << "> <" << points << ">" << endl;
 	if(((unsigned int) id)<this->handle.size()){
 		int i = this->handle[id];
 		if(i!=-1){
@@ -138,6 +154,10 @@ bool minheap::earnPoints(int id, int points){
 }
 
 bool minheap::losePoints(int id, int points){
+	if(output!=NULL && output->is_open())
+		output << "losePoints <" << id << "> <" << points << ">" << endl;
+	else
+		cout << "losePoints <" << id << "> <" << points << ">" << endl;
 	if(((unsigned int) id)<this->handle.size()){
 		int i = this->handle[id];
 		if(i!=-1){
@@ -157,6 +177,10 @@ bool minheap::losePoints(int id, int points){
 }
 
 void minheap::showContestants() const {
+	if(output!=NULL && output->is_open())
+		output << "showContestants" << endl;
+	else
+		cout << "showContestants" << endl;
 	if(output!=NULL && output->is_open()){
 		for(unsigned int i=0; i<this->heap.size(); i++){
 			(* this->output) << "Contestant <" << this->heap[i].id << "> is in extended heap location <" << i << "> with score <" << this->heap[i].points << ">." << endl;
@@ -169,6 +193,10 @@ void minheap::showContestants() const {
 }
 
 void minheap::showHandles() const {
+	if(output!=NULL && output->is_open())
+		output << "showHandles" << endl;
+	else
+		cout << "showHandles" << endl;
 	if(output!=NULL && output->is_open()){
 		for(unsigned int i=0; i<this->handle.size(); i++){
 			if(this->handle[i]==-1)
@@ -187,6 +215,10 @@ void minheap::showHandles() const {
 }
 
 bool minheap::showLocation(int id) const{
+	if(output!=NULL && output->is_open())
+		output << "showLocation <" << id << ">" << endl;
+	else
+		cout << "showLocation <" << id << ">" << endl;
 	if(((unsigned int) id)<this->handle.size()){
 		int i = this->handle[id];
 		if(i!=-1){
@@ -205,6 +237,10 @@ bool minheap::showLocation(int id) const{
 }
 
 bool minheap::crownWinner(){
+	if(output!=NULL && output->is_open())
+		output << "crownWinner" << endl;
+	else
+		cout << "crownWinner" << endl;
 	while(this->num_const>1){
 		this->eliminateWeakest(false);
 	}
