@@ -1,4 +1,7 @@
 #include "minheap.h"
+#ifndef DEBUG
+#define DEBUG true
+#endif
 
 using namespace std;
 
@@ -17,19 +20,47 @@ bool minheap::setOTP(ofstream * output){
 	return true;
 }
 
+bool minheap:isHeap(unsigned int i) const{
+	unsigned int l = i*2+1;
+	unsigned int r=l+1;
+	bool l_ = l<this->heap.size();
+	bool r_ = r<this->heap.size();
+	if(l_ && this->heap[l] < this->heap[i])
+		return false;
+	if(r_ && this->heap[r] < this->heap[i])
+		return false;
+	if(l_ && r_)
+		return isHeap(l) && isHeap(r);
+	if(l_)
+		return isHeap(l);
+	if(r_)
+		return isHeap(r);
+	return true;
+}
+
 void minheap::heapify(unsigned int i){
 	unsigned int smallest = i;
 	unsigned int l = i*2+1;
 	unsigned int r = l+1;
+#if DEBUG
+int num = 0;
+cout << "\tTest " << ++num << "-" << i << endl;
+#endif
 	if(l<this->heap.size() && this->heap[l] < this->heap[i])
 		smallest = l;
 	if(r<this->heap.size() && this->heap[r] < this->heap[i])
 		smallest = r;
 	if(smallest!=i){
 		this->swap(this->heap[smallest].id, this->heap[i].id);
+#if DEBUG
+cout << "\tTest " << ++num << "-" << i << endl;
+#endif
 		int p = (i-1)/2;
 		if(p>=0 && this->heap[p] > this->heap[i])
 			this->heapify((unsigned int)p);
+#if DEBUG
+cout << "\tTest " << ++num << "-" << i << endl;
+#endif
 		this->heapify(smallest);
 	}
 }
@@ -117,6 +148,9 @@ bool minheap::eliminateWeakest(bool print){
 	}
 	int id = this->heap[0].id;
 	int score = this->heap[0].points;
+#if DEBUG
+this->printAll();
+#endif
 	this->swap(this->heap[0].id, this->heap[this->heap.size()-1].id);
 	this->printAll();
 	this->heap.pop_back();
@@ -128,8 +162,13 @@ bool minheap::eliminateWeakest(bool print){
 		else
 			cout << "Contestant <" << id << "> with current lowest score <" << score << "> eliminated." << endl;
 	}
-	this->printAll();
+#if DEBUG
+this->printAll();
+#endif
 	this->heapify(0);
+#if DEBUG
+this->printAll();
+#endif
 	return true;
 }
 

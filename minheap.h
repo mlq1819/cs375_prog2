@@ -26,11 +26,12 @@ class minheap{
 	private:
 		std::vector<int> handle;
 		std::vector<contestant> heap;
-		void heapify(unsigned int i);
+		void heapify(unsigned int);
 		void swap(int, int);
 		std::ofstream * output;
 		int max_size;
 		int num_const;
+		bool isHeap(unsigned int) const;
 	public:
 		minheap(int max_size);
 		bool setOTP(std::ofstream *);
