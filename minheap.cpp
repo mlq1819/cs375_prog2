@@ -49,10 +49,10 @@ bool minheap::findContestant(int id) const {
 		int i = this->handle[id];
 		if(i!=-1){
 			int p = this->heap[i].points;
-			if(output!=NULL && output->is_open())
-				(* this->output) << "Contestant " << id << " is in the extended heap with score " p << "." << endl;
-			else
-				cout << "Contestant " << id << " is in the extended heap with score " p << "." << endl;
+			if(output!=NULL && output->is_open()){
+				(* this->output) << "Contestant " << id << " is in the extended heap with score " << p << "." << endl;
+			} else
+				cout << "Contestant " << id << " is in the extended heap with score " << p << "." << endl;
 			return true;
 		}
 	}
@@ -123,9 +123,9 @@ bool minheap::earnPoints(int id, int points){
 		if(i!=-1){
 			this->heap[i].points+=points;
 			if(output!=NULL && output->is_open())
-				(* this->output) << "Contestant " << id << "'s score increased by " points << " points to " << this->heap[i].points <<  "." << endl;
+				(* this->output) << "Contestant " << id << "'s score increased by "<<  points << " points to " << this->heap[i].points <<  "." << endl;
 			else
-				cout << "Contestant " << id << "'s score increased by " points << " points to " << this->heap[i].points <<  "." << endl;
+				cout << "Contestant " << id << "'s score increased by " << points << " points to " << this->heap[i].points <<  "." << endl;
 			return true;
 		}
 	}
@@ -142,9 +142,9 @@ bool minheap::losePoints(int id, int points){
 		if(i!=-1){
 			this->heap[i].points-=points;
 			if(output!=NULL && output->is_open())
-				(* this->output) << "Contestant " << id << "'s score decreased by " points << " points to " << this->heap[i].points <<  "." << endl;
+				(* this->output) << "Contestant " << id << "'s score decreased by " << points << " points to " << this->heap[i].points <<  "." << endl;
 			else
-				cout << "Contestant " << id << "'s score decreased by " points << " points to " << this->heap[i].points <<  "." << endl;
+				cout << "Contestant " << id << "'s score decreased by " << points << " points to " << this->heap[i].points <<  "." << endl;
 			return true;
 		}
 	}
@@ -185,7 +185,7 @@ void minheap::showHandles() const {
 	}
 }
 
-bool minheap::showLocation(int id){
+bool minheap::showLocation(int id) const{
 	if(id<this->handle.size()){
 		int i = this->handle[id];
 		if(i!=-1){
