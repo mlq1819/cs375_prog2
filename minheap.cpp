@@ -155,7 +155,9 @@ bool minheap::eliminateWeakest(bool print){
 this->printAll();
 #endif
 	this->swap(this->heap[0].id, this->heap[this->heap.size()-1].id);
-	this->printAll();
+#if DEBUG
+this->printAll();
+#endif
 	this->heap.pop_back();
 	this->handle[id]=-1;
 	this->num_const--;
