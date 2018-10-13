@@ -50,14 +50,14 @@ bool minheap::findContestant(int id) const {
 		if(i!=-1){
 			int p = this->heap[i].points;
 			if(output!=NULL && output->is_open())
-				output << "Contestant " << id << " is in the extended heap with score " p << "." << endl;
+				(* this->output) << "Contestant " << id << " is in the extended heap with score " p << "." << endl;
 			else
 				cout << "Contestant " << id << " is in the extended heap with score " p << "." << endl;
 			return true;
 		}
 	}
 	if(output!=NULL && output->is_open())
-		output << "Contestant " << id << " is not in the extended heap." << endl;
+		(* this->output) << "Contestant " << id << " is not in the extended heap." << endl;
 	else
 		cout << "Contestant " << id << " is not in the extended heap." << endl;
 	return false;
@@ -66,7 +66,7 @@ bool minheap::findContestant(int id) const {
 bool minheap::insertContestant(int id, int score){
 	if(this->num_const==this->max_size){
 		if(output!=NULL && output->is_open())
-			output << "Contestant " << id << " could not be inserted because the extended heap is full." << endl;
+			(* this->output) << "Contestant " << id << " could not be inserted because the extended heap is full." << endl;
 		else
 			cout << "Contestant " << id << " could not be inserted because the extended heap is full." << endl;
 		this->shrink_to_fit();
@@ -74,7 +74,7 @@ bool minheap::insertContestant(int id, int score){
 	}
 	if(id<this->handle.size() && this->handle[id]!=-1){
 		if(output!=NULL && output->is_open())
-			output << "Contestant " << id << " is already in the extended heap: cannot insert." << endl;
+			(* this->output) << "Contestant " << id << " is already in the extended heap: cannot insert." << endl;
 		else
 			cout << "Contestant " << id << " is already in the extended heap: cannot insert." << endl;
 		return false;
@@ -86,7 +86,7 @@ bool minheap::insertContestant(int id, int score){
 	this->handle[id]=this->heap.size();
 	this->heap.push_back(c);
 	if(output!=NULL && output->is_open())
-		output << "Contestant " << id << " inserted with initial score " << score << "." << endl;
+		(* this->output) << "Contestant " << id << " inserted with initial score " << score << "." << endl;
 	else
 		cout << "Contestant " << id << " inserted with initial score " << score << "." << endl;
 	this->heapify(0);
@@ -97,7 +97,7 @@ bool minheap::eliminateWeakest(bool print){
 	if(this->heap.size()==0){
 		if(print){
 			if(output!=NULL && output->is_open())
-				output << "No contestant can be eliminated since the extended heap is empty." << endl;
+				(* this->output) << "No contestant can be eliminated since the extended heap is empty." << endl;
 			else
 				cout << "No contestant can be eliminated since the extended heap is empty." << endl;
 		}
@@ -109,7 +109,7 @@ bool minheap::eliminateWeakest(bool print){
 	this->num_const--;
 	if(print){
 		if(output!=NULL && output->is_open())
-			output << "Contestant " << c.id << " with current lowest score " << c.points << " eliminated." << endl;
+			(* this->output) << "Contestant " << c.id << " with current lowest score " << c.points << " eliminated." << endl;
 		else
 			cout << "Contestant " << c.id << " with current lowest score " << c.points << " eliminated." << endl;
 	}
@@ -123,14 +123,14 @@ bool minheap::earnPoints(int id, int points){
 		if(i!=-1){
 			this->heap[i].points+=points;
 			if(output!=NULL && output->is_open())
-				output << "Contestant " << id << "'s score increased by " points << " points to " << this->heap[i].points <<  "." << endl;
+				(* this->output) << "Contestant " << id << "'s score increased by " points << " points to " << this->heap[i].points <<  "." << endl;
 			else
 				cout << "Contestant " << id << "'s score increased by " points << " points to " << this->heap[i].points <<  "." << endl;
 			return true;
 		}
 	}
 	if(output!=NULL && output->is_open())
-		output << "Contestant " << id << " is not in the extended heap." << endl;
+		(* this->output) << "Contestant " << id << " is not in the extended heap." << endl;
 	else
 		cout << "Contestant " << id << " is not in the extended heap." << endl;
 	return false;
@@ -142,14 +142,14 @@ bool minheap::losePoints(int id, int points){
 		if(i!=-1){
 			this->heap[i].points-=points;
 			if(output!=NULL && output->is_open())
-				output << "Contestant " << id << "'s score decreased by " points << " points to " << this->heap[i].points <<  "." << endl;
+				(* this->output) << "Contestant " << id << "'s score decreased by " points << " points to " << this->heap[i].points <<  "." << endl;
 			else
 				cout << "Contestant " << id << "'s score decreased by " points << " points to " << this->heap[i].points <<  "." << endl;
 			return true;
 		}
 	}
 	if(output!=NULL && output->is_open())
-		output << "Contestant " << id << " is not in the extended heap." << endl;
+		(* this->output) << "Contestant " << id << " is not in the extended heap." << endl;
 	else
 		cout << "Contestant " << id << " is not in the extended heap." << endl;
 	return false;
@@ -158,7 +158,7 @@ bool minheap::losePoints(int id, int points){
 void minheap::showContestants() const {
 	if(output!=NULL && output->is_open()){
 		for(int i=0; i<this->heap.size(); i++){
-			output << "Contestant " << this->heap[i].id << " is in extended heap location " << i << " with score " << this->heap[i].points << "." << endl;
+			(* this->output) << "Contestant " << this->heap[i].id << " is in extended heap location " << i << " with score " << this->heap[i].points << "." << endl;
 		}
 	} else {
 		for(int i=0; i<this->heap.size(); i++){
@@ -171,9 +171,9 @@ void minheap::showHandles() const {
 	if(output!=NULL && output->is_open()){
 		for(int i=0; i<this->handle.size(); i++){
 			if(this->handle[i]==-1)
-				output << "There is no Contestant " << i << " in the extended heap: handle[" << i << "]=-1." << endl;
+				(* this->output) << "There is no Contestant " << i << " in the extended heap: handle[" << i << "]=-1." << endl;
 			else
-				output << "Contestant " << i << " stored in extended heap location " << this->handle[i] << "." << endl;
+				(* this->output) << "Contestant " << i << " stored in extended heap location " << this->handle[i] << "." << endl;
 		}
 	} else {
 		for(int i=0; i<this->handle.size(); i++){
@@ -190,14 +190,14 @@ bool minheap::showLocation(int id){
 		int i = this->handle[id];
 		if(i!=-1){
 			if(output!=NULL && output->is_open())
-				output << "Contestant " << id << " stored in extended heap location " << i << "." << endl;
+				(* this->output) << "Contestant " << id << " stored in extended heap location " << i << "." << endl;
 			else
 				cout << "Contestant " << id << " stored in extended heap location " << i << "." << endl;
 			return true;
 		}
 	}
 	if(output!=NULL && output->is_open())
-		output << "There is no contestant " << id << " in the extended heap: handle[" << id << "]=-1." << endl;
+		(* this->output) << "There is no contestant " << id << " in the extended heap: handle[" << id << "]=-1." << endl;
 	else
 		cout << "There is no contestant " << id << " in the extended heap: handle[" << id << "]=-1." << endl;
 	return false;
@@ -208,7 +208,7 @@ bool minheap::crownWinner(){
 		this->eliminateWeakest(false);
 	}
 	if(output!=NULL && output->is_open())
-		output << "Contestant " << this->heap[0].id << " wins with score " << this->heap[0].points << "!" << endl;
+		(* this->output) << "Contestant " << this->heap[0].id << " wins with score " << this->heap[0].points << "!" << endl;
 	else
 		cout << "Contestant " << this->heap[0].id << " wins with score " << this->heap[0].points << "!" << endl;
 	return true;
