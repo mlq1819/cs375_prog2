@@ -36,6 +36,7 @@ class minheap{
 		bool setOTP(std::ofstream *);
 		contestant operator[](int i) const {return this->heap[this->handle[i]];};
 		void shrink_to_fit(){this->heap.shrink_to_fit(); this->handle.shrink_to_fit();};
+		void printAll() const;
 		
 		bool findContestant(int) const;
 		bool insertContestant(int, int);

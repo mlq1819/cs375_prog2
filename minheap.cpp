@@ -250,3 +250,12 @@ bool minheap::crownWinner(){
 		cout << "Contestant <" << this->heap[0].id << "> wins with score <" << this->heap[0].points << ">!" << endl;
 	return true;
 }
+
+void minheap::printAll() const {
+	cout << "\tHeap" << endl;
+	for(unsigned int i=0; i<this->heap.size(); i++)
+		cout << "\t\theap[" << i << "]=<" << this->heap[i].id << "," << this->heap[i].points << ">" << endl;
+	cout << "\tHandle" << endl;
+	for(unsigned int i=0; i<this->handle.size(); i++)
+		cout << "\t\thandle[" << i << "]=" << this->handle[i] << end;
+}

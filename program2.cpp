@@ -7,7 +7,7 @@
 #include <string>
 #include "Filereader.h"
 #include "minheap.h"
-#define DEBUG false
+#define DEBUG true
 
 using namespace std;
 
@@ -112,6 +112,9 @@ int main(int argc, char** argv){
 		int arg1 = getArg1(reader.current());
 		int arg2 = getArg2(reader.current());
 		switch(arg0){
+#if DEBUG
+heap.printAll();
+#endif
 			case 1:
 				if(arg1!=-1)
 					heap.findContestant(arg1);
@@ -170,6 +173,9 @@ int main(int argc, char** argv){
 				cout << "Parse Error (arg0): str=" << reader.current() << endl;
 		}
 	}
+#if DEBUG
+heap.printAll();
+#endif
 //														cleanup phase
 	if(((string)"STDOUT").compare(argv[2])!=0 && ofp.is_open())
 		ofp.close();
