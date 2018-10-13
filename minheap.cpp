@@ -117,6 +117,7 @@ bool minheap::eliminateWeakest(bool print){
 	}
 	int id = this->heap[0].id;
 	int score = this->heap[0].points;
+	cout << this->heap.size() << endl;
 	this->swap(0, this->heap.size()-1);
 	this->printAll();
 	this->heap.pop_back();
