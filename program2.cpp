@@ -94,7 +94,7 @@ int main(int argc, char** argv){
 	ifp.close();
 //														processing phase
 	reader.start();
-	int max_comps = atoi((const char *) reader.current());
+	int max_comps = atoi((char *) reader.current());
 	minheap heap = minheap(max_comps);
 	ofstream ofp;
 	if(((string)"STDOUT").compare(argv[2])!=0)
@@ -105,7 +105,7 @@ int main(int argc, char** argv){
 		else
 			cout << "Output to be sent to STDOUT" << endl;
 	} else 
-		heap.addOTP(&ofp);
+		heap.setOTP(&ofp);
 //														execution phase
 	while(reader.next()){
 		int arg0 = getArg0(reader.current());
