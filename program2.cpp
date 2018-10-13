@@ -100,8 +100,10 @@ int main(int argc, char** argv){
 	ofp.open(argv[2]);
 	if(!ofp.is_open() || !ofp.good()){
 		cout << "Bad Output File Name: \"" << argv[2] << "\"; printing to STDOUT instead" << endl;
-	} else 
+	} else {
+		cout << "We good?" << endl;
 		heap.setOTP(&ofp);
+	}
 //														execution phase
 	while(reader.next()){
 		int arg0 = getArg0(reader.current());
