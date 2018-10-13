@@ -94,21 +94,26 @@ bool minheap::insertContestant(int id, int score){
 	return true;
 }
 
-bool minheap::eliminateWeakest(){
+bool minheap::eliminateWeakest(bool print){
 	if(this->heap.size()==0){
-		if(output!=NULL && output->is_open())
-			output << "No contestant can be eliminated since the extended heap is empty." << endl;
-		else
-			cout << "No contestant can be eliminated since the extended heap is empty." << endl;
+		if(print){
+			if(output!=NULL && output->is_open())
+				output << "No contestant can be eliminated since the extended heap is empty." << endl;
+			else
+				cout << "No contestant can be eliminated since the extended heap is empty." << endl;
+		}
 		return false;
 	}
 	this->swap(0, this->heap.size()-1);
 	contestant c = this->heap.pop_back();
 	this->handle[c.id]=-1;
-	if(output!=NULL && output->is_open())
-		output << "Contestant " << c.id << " with current lowest score " << c.points << " eliminated." << endl;
-	else
-		cout << "Contestant " << c.id << " with current lowest score " << c.points << " eliminated." << endl;
+	this->num_const--;
+	if(print){
+		if(output!=NULL && output->is_open())
+			output << "Contestant " << c.id << " with current lowest score " << c.points << " eliminated." << endl;
+		else
+			cout << "Contestant " << c.id << " with current lowest score " << c.points << " eliminated." << endl;
+	}
 	this->heapify();
 	return true;
 }
@@ -199,3 +204,13 @@ bool minheap::showLocation(int id){
 	return false;
 }
 
+bool minheap::crownWinner(){
+	while(this->num_const>1){
+		this->eliminateWeakest(false);
+	}
+	if(output!=NULL && output->is_open())
+		output << "Contestant " << this->heap[0].id << " wins with score " << this->heap[0].points << "!" << endl;
+	else
+		cout << "Contestant " << this->heap[0].id << " wins with score " << this->heap[0].points << "!" << endl;
+	return true;
+}

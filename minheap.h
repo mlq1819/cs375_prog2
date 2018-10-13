@@ -38,13 +38,14 @@ class minheap{
 		
 		bool findContestant(int) const;
 		bool insertContestant(int, int);
-		bool eliminateWeakest();
+		bool eliminateWeakest(){return this->eliminateWeakest(true);};
+		bool eliminateWeakest(bool);
 		bool earnPoints(int, int);
 		bool losePoints(int, int);
 		void showContestants() const;
 		void showHandles() const;
 		bool showLocation(int) const;
-		contestant crownWinner();
+		bool crownWinner();
 };
 
 #endif
