@@ -13,7 +13,7 @@ minheap::minheap(int max_size){
 bool minheap::setOTP(ostream * output){
 	if(this->output==NULL)
 		return false;
-	this->output=output;
+	this->output=*output;
 	return true;
 }
 
@@ -89,7 +89,7 @@ bool minheap::insertContestant(int id, int score){
 		output << "Contestant " << id << " inserted with initial score " << score << "." << endl;
 	else
 		cout << "Contestant " << id << " inserted with initial score " << score << "." << endl;
-	this->heapify();
+	this->heapify(0);
 	return true;
 }
 
@@ -113,7 +113,7 @@ bool minheap::eliminateWeakest(bool print){
 		else
 			cout << "Contestant " << c.id << " with current lowest score " << c.points << " eliminated." << endl;
 	}
-	this->heapify();
+	this->heapify(0);
 	return true;
 }
 

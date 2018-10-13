@@ -25,14 +25,14 @@ class minheap{
 	private:
 		std::vector<int> handle;
 		std::vector<contestant> heap;
-		void heapify();
+		void heapify(int i);
 		void swap(int, int);
-		std::ofstream * output;
+		std::ofstream output;
 		int max_size;
 		int num_const;
 	public:
 		minheap(int max_size);
-		bool setOTP(std::ofstream * output);
+		bool setOTP(std::ofstream *);
 		contestant operator[](int i) const {return this->heap[this->handle[i]];};
 		void shrink_to_fit(){this->heap.shrink_to_fit(); this->handle.shrink_to_fit();};
 		
