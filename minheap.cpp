@@ -1,6 +1,6 @@
 #include "minheap.h"
 #ifndef DEBUG
-#define DEBUG true
+#define DEBUG false
 #endif
 
 using namespace std;

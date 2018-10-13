@@ -7,7 +7,7 @@
 #include <string>
 #include "Filereader.h"
 #include "minheap.h"
-#define DEBUG true
+#define DEBUG false
 
 using namespace std;
 
