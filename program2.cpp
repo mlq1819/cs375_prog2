@@ -13,7 +13,7 @@ using namespace std;
 
 int getArg0(string str){
 	int i=0;
-	while(i<str.length && str[i]!=' ')
+	while(i<str.length() && str[i]!=' ')
 		i++;
 	string arg0 = str.substr(0, i);
 	if(arg0.compare("findContestant")==0){
@@ -40,10 +40,10 @@ int getArg0(string str){
 
 int getArg1(string str){
 	int i=0;
-	while(i<str.length && str[i]!='<')
+	while(i<str.length() && str[i]!='<')
 		i++;
 	int j=i;
-	while(j<str.length && str[j]!='>')
+	while(j<str.length() && str[j]!='>')
 		j++;
 	j-= ++i;
 	if(i>=j)
@@ -53,13 +53,13 @@ int getArg1(string str){
 
 int getArg2(string str){
 	int i=0;
-	while(i<str.length && str[i]!='<')
+	while(i<str.length() && str[i]!='<')
 		i++;
 	i++;
-	while(i<str.length && str[i]!='<')
+	while(i<str.length() && str[i]!='<')
 		i++;
 	int j=i;
-	while(j<str.length && str[j]!='>')
+	while(j<str.length() && str[j]!='>')
 		j++;
 	j-= ++i;
 	if(i>=j)

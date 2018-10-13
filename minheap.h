@@ -13,12 +13,12 @@ class contestant{
 		contestant(int id, int points){this->id=id; this->points=points;};
 		int id;
 		int points;
-		bool operator<(contestant o) const {return this->points<o.points};
-		bool operator<=(contestant o) const {return this->points<=o.points};
-		bool operator>(contestant o) const {return this->points>o.points};
-		bool operator>=(contestant o) const {return this->points>=o.points};
-		bool operator==(contestant o) const {return this->points==o.points};
-		bool operator!=(contestant o) const {return this->points!=o.points};
+		bool operator<(contestant o) const {return this->points<o.points;};
+		bool operator<=(contestant o) const {return this->points<=o.points;};
+		bool operator>(contestant o) const {return this->points>o.points;};
+		bool operator>=(contestant o) const {return this->points>=o.points;};
+		bool operator==(contestant o) const {return this->points==o.points;};
+		bool operator!=(contestant o) const {return this->points!=o.points;};
 };
 
 class minheap{
@@ -34,7 +34,7 @@ class minheap{
 		minheap(int max_size);
 		minheap(int max_size, std::ofstream * output);
 		contestant operator[](int i) const {return this->heap[this->handle[i]]};
-		void shrink_to_fit() const {this->heap.shrink_to_fit(); this->handle.shrink_to_fit();};
+		void shrink_to_fit(){this->heap.shrink_to_fit(); this->handle.shrink_to_fit();};
 		
 		bool findContestant(int) const;
 		bool insertContestant(int, int);
